@@ -120,15 +120,12 @@ class MeterDetection:
                 cv2.circle(img, (x, y), 2, (120, 0, 255), thickness=-1)
                 cv2.imshow("image", img)
                 
-
-            elif event == cv2.EVENT_LBUTTONUP:  # 鼠标左键fang
-                cv2.waitKey(500)
-                cv2.destroyWindow("image")
-                
         cv2.namedWindow("image")
         cv2.setMouseCallback("image", on_EVENT_LBUTTONDOWN)
         cv2.imshow('image', img)
-        cv2.waitKey()
+        while cv2.waitKey() != 13  #不是回车键，一直循环
+           if cv2.getWinddowProperty('image',0) == -1:  #窗口关闭
+              break
            
     def ImgCutCircle(self):
         """
